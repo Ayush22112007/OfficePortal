@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome | Employee Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-3xl w-full p-10 bg-white rounded-2xl card-shadow text-center relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
+        <div class="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-indigo-100 opacity-50"></div>
+        <div class="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-purple-100 opacity-50"></div>
+        
+        <!-- Main content -->
+        <div class="relative z-10">
+            <!-- Logo/Icon -->
+            <div class="flex justify-center mb-6">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center">
+                    <i class="fas fa-users text-white text-3xl"></i>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Employee Management Portal</h1>
+            <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+                Streamline your HR operations, manage employee data efficiently, and keep everything organized in one secure platform.
+            </p>
+            
+            <!-- Feature highlights -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <div class="p-4 bg-indigo-50 rounded-lg">
+                    <i class="fas fa-shield-alt text-indigo-600 text-2xl mb-2"></i>
+                    <h3 class="font-semibold text-gray-800">Secure Access</h3>
+                </div>
+                <div class="p-4 bg-purple-50 rounded-lg">
+                    <i class="fas fa-chart-line text-purple-600 text-2xl mb-2"></i>
+                    <h3 class="font-semibold text-gray-800">Analytics</h3>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-lg">
+                    <i class="fas fa-sync text-blue-600 text-2xl mb-2"></i>
+                    <h3 class="font-semibold text-gray-800">Real-time Updates</h3>
+                </div>
+            </div>
+            
+            <!-- Login buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-5">
+                <a href="{% url 'hr_login' %}" 
+                   class="btn-hover px-8 py-4 bg-gradient-to-r from-indigo-600 to-indigo-800 text-white rounded-xl font-medium flex items-center justify-center gap-3">
+                    <i class="fas fa-user-tie"></i>
+                    <span>HR Portal</span>
+                </a>
+                <a href="{% url 'emp_login' %}" 
+                   class="btn-hover px-8 py-4 bg-gradient-to-r from-green-600 to-green-800 text-white rounded-xl font-medium flex items-center justify-center gap-3">
+                    <i class="fas fa-user"></i>
+                    <span>Employee Portal</span>
+                </a>
+            </div>
+            
+            <!-- Footer -->
+            <div class="mt-10 pt-6 border-t border-gray-200 text-gray-500 text-sm">
+                <p>© 2025 Employee Portal. All rights reserved.</p>
+                <p class="mt-1">Secure access for authorized personnel only</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

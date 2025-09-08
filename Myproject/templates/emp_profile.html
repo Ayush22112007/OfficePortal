@@ -1,0 +1,54 @@
+{% extends "menu.html" %}
+{% block content %}
+
+<div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md mt-10">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Employee Profile</h2>
+
+  <div class="space-y-6">
+
+    <!-- Username -->
+    <div class="flex items-start p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors duration-200">
+      <div class="flex-shrink-0 p-3 bg-blue-100 rounded-lg">
+        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5.121 17.804A11.954 11.954 0 0112 15c2.485 0 4.797.76 6.879 2.053M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+      </div>
+      <div class="ml-4">
+        <h3 class="text-sm font-medium text-gray-500">Username</h3>
+        <p class="text-lg font-medium text-gray-900">{{ user.username }}</p>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="flex items-start p-4 bg-gray-50 rounded-xl hover:bg-green-50 transition-colors duration-200">
+      <div class="flex-shrink-0 p-3 bg-green-100 rounded-lg">
+        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M16 12H8m8 0H8m0 0l-4 4m4-4l-4-4"/>
+        </svg>
+      </div>
+      <div class="ml-4">
+        <h3 class="text-sm font-medium text-gray-500">Email</h3>
+        <p class="text-lg font-medium text-gray-900">{{ user.email }}</p>
+      </div>
+    </div>
+
+    <!-- Role -->
+    <div class="flex items-start p-4 bg-gray-50 rounded-xl hover:bg-purple-50 transition-colors duration-200">
+      <div class="flex-shrink-0 p-3 bg-purple-100 rounded-lg">
+        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 11c0-1.657-1.343-3-3-3s-3 1.343-3 3 1.343 3 3 3 3-1.343 3-3zM4 20h16"/>
+        </svg>
+      </div>
+      <div class="ml-4">
+        <h3 class="text-sm font-medium text-gray-500">Role</h3>
+        <p class="text-lg font-medium text-gray-900">{{ role }}</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

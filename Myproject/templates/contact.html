@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="max-width: 500px; margin: 40px auto; padding: 20px; background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+  <h2 style="text-align: center; margin-bottom: 20px;">Contact Form</h2>
+  <form method="post">
+    {% csrf_token %}
+
+    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Name:</label>
+    <input type="text" name="name" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;" required>
+
+    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Email:</label>
+    <input type="email" name="email" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;" required>
+
+    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Phone:</label>
+    <input type="text" name="phone" style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;" required>
+
+    <label style="display: block; margin-bottom: 5px; font-weight: bold;">Description:</label>
+    <textarea name="desc" style="width: 100%; padding: 8px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;" rows="4" required></textarea>
+
+    <div style="text-align: center;">
+      <input type="submit" value="Submit" style="background-color: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+    </div>
+  </form>
+</div>
+{% endblock %}

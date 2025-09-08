@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HR Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .input-focus:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <!-- Logo and Header -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white mb-4">
+                <i class="fas fa-user-tie text-indigo-600 text-2xl"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-white">HR Portal</h2>
+            <p class="text-indigo-100 mt-2">Management access for HR personnel</p>
+        </div>
+        
+        <!-- Login Card -->
+        <div class="bg-white rounded-2xl card-shadow overflow-hidden">
+            <div class="p-1 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
+            
+            <form method="POST" class="p-8">
+                {% csrf_token %}
+                
+                <!-- Error Messages -->
+                {% if messages %}
+                <div class="mb-6 p-4 bg-red-50 rounded-lg border border-red-200">
+                    <div class="flex items-start">
+                        <i class="fas fa-exclamation-circle text-red-500 mt-0.5 mr-2"></i>
+                        <div class="text-red-700">
+                            {% for message in messages %}
+                            <p class="text-sm">{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Username Field -->
+                <div class="mb-5">
+                    <label class="block mb-2 font-medium text-gray-700" for="username">
+                        <i class="fas fa-user mr-2 text-gray-500"></i>Username
+                    </label>
+                    <div class="relative">
+                        <input id="username" name="username" type="text" required 
+                               class="w-full p-3 pl-10 border border-gray-300 rounded-lg input-focus focus:outline-none transition"
+                               placeholder="Enter your username">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <i class="fas fa-user text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Password Field -->
+                <div class="mb-6">
+                    <label class="block mb-2 font-medium text-gray-700" for="password">
+                        <i class="fas fa-lock mr-2 text-gray-500"></i>Password
+                    </label>
+                    <div class="relative">
+                        <input id="password" name="password" type="password" required 
+                               class="w-full p-3 pl-10 border border-gray-300 rounded-lg input-focus focus:outline-none transition"
+                               placeholder="Enter your password">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <i class="fas fa-lock text-gray-400"></i>
+                        </div>
+                        <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 flex items-center pr-3">
+                            <i class="fas fa-eye text-gray-400 hover:text-gray-600"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center">
+                        <input id="remember" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                        <label for="remember" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn-hover w-full bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-3 px-4 rounded-lg font-medium">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login as HR
+                </button>
+                
+                <!-- Additional Options -->
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">
+                        Are you an employee? 
+                        <a href="{% url 'emp_login' %}" class="text-indigo-600 font-medium hover:text-indigo-800 hover:underline">
+                            Employee Login
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Footer -->
+        <div class="mt-6 text-center text-white text-sm">
+            <p>© 2025 Employee Portal. All rights reserved.</p>
+            <p class="mt-1 text-indigo-100">Authorized HR personnel only</p>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordInput = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+    </script>
+</body>
+</html>
